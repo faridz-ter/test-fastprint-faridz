@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konfirmasi Hapus Produk</title>
+</head>
+<body>
+    <h1>Konfirmasi Hapus Produk</h1>
+    <p>Anda yakin ingin menghapus produk {{ produk.nama_produk }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Hapus</button>
+    </form>
+    <a href="{% url 'produk_list' %}">Kembali ke Daftar Produk</a>
+</body>
+</html>

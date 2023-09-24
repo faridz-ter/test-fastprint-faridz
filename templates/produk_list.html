@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Produk</title>
+</head>
+<body>
+    <h1>Daftar Produk</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama Produk</th>
+                <th>Harga</th>
+                <th>Kategori</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produk in produk_list %}
+            <tr>
+                <td>{{ produk.id }}</td>
+                <td>{{ produk.nama_produk }}</td>
+                <td>{{ produk.harga }}</td>
+                <td>{{ produk.kategori.nama_kategori }}</td>
+                <td>{{ produk.status.nama_status }}</td>
+                <td>
+                    <a href="{% url 'edit_produk' produk.id %}">Edit</a>
+                    <a href="{% url 'hapus_produk' produk.id %}" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">Hapus</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'tambah_produk' %}">Tambah Produk</a>
+    <p>Lihat Produk yang hanya <a href="{% url 'produk_filter' %}">bisa dijual</a></p>
+</body>
+</html>
